@@ -1,0 +1,20 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Outputs the time
+Parameters:
+  PathParam:
+    Type: String
+Resources:
+  TimeFunction:
+    Properties:
+      CodeUri: s3://ndrest-lambda1/8a8b763c6333cd2d3f56d243770d705e
+      Events:
+        MyTimeApi:
+          Properties:
+            Method: GET
+            Path:
+              Ref: PathParam
+          Type: Api
+      Handler: index.handler
+      Runtime: nodejs6.10
+    Type: AWS::Serverless::Function
+Transform: AWS::Serverless-2016-10-31

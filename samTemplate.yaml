@@ -17,3 +17,5 @@ Resources:
           Properties:
             Path: !Ref PathParam
             Method: GET
+
+ 

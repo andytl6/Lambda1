@@ -2,19 +2,11 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: Outputs the time
 Parameters:
-  EnvType:
-    Description: Environment type.
-    Default: test
-    Type: String
-    AllowedValues: ["prod", "dev"]
-    ConstraintDescription: must specify prod, or dev.
-Conditions:
-  CreateProdResources: !Equals [!Ref EnvType, "prod"]
-  CreateDevResources: !Equals [!Ref EnvType, "dev"]
+  PathParam:    
+    Type: String  
 Resources:
-  TimeFunctionProd:
-    Type: AWS::Serverless::Function
-    Condition: CreateProdResources
+  TimeFunction:
+    Type: AWS::Serverless::Function    
     Properties:
       Handler: index.handler
       Runtime: nodejs6.10
@@ -23,18 +15,5 @@ Resources:
         MyTimeApi:
           Type: Api
           Properties:
-            Path: /TimeResource
-            Method: GET
-  TimeFunctionDev:
-    Type: AWS::Serverless::Function
-    Condition: CreateDevResources
-    Properties:
-      Handler: index.handler
-      Runtime: nodejs6.10
-      CodeUri: ./
-      Events:
-        MyTimeApi:
-          Type: Api
-          Properties:
-            Path: /TimeResource
+            Path: !Ref PathParam
             Method: GET

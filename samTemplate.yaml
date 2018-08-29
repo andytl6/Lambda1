@@ -4,6 +4,7 @@ Description: Outputs the time
 Parameters:
   PathParam:    
     Type: String  
+    Default: "/TimeResource"
 Resources:
   TimeFunction:
     Type: AWS::Serverless::Function    
@@ -15,7 +16,6 @@ Resources:
         MyTimeApi:
           Type: Api
           Properties:
-            Path: !Ref PathParam
+            Path: ${PathParam}
             Method: GET
-
- 
+            

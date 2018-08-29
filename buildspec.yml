@@ -10,3 +10,5 @@ artifacts:
   files:
     - samTemplate.yaml
     - outputSamTemplate.yaml
+    - stage_template_configuration.json
+    - prod_template_configuration.json

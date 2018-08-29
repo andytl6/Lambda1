@@ -8,7 +8,7 @@ Parameters:
     Type: String
     AllowedValues: [prod, dev]
     ConstraintDescription: must specify prod, or dev.
- Conditions:
+Conditions:
   CreateProdResources: !Equals [!Ref EnvType, "prod"]
   CreateDevResources: !Equals [!Ref EnvType, "dev"]
 Resources:
@@ -23,7 +23,7 @@ Resources:
         MyTimeApi:
           Type: Api
           Properties:
-            Path: /TimeResourceProd
+            Path: /TimeResource
             Method: GET
   TimeFunctionDev:
     Type: AWS::Serverless::Function
@@ -36,5 +36,5 @@ Resources:
         MyTimeApi:
           Type: Api
           Properties:
-            Path: /TimeResourceDev
+            Path: /TimeResource
             Method: GET

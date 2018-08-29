@@ -6,7 +6,7 @@ Parameters:
     Description: Environment type.
     Default: test
     Type: String
-    AllowedValues: [prod, dev]
+    AllowedValues: ["prod", "dev"]
     ConstraintDescription: must specify prod, or dev.
 Conditions:
   CreateProdResources: !Equals [!Ref EnvType, "prod"]

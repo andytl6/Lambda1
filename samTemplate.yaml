@@ -1,10 +1,8 @@
-AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: Outputs the time
 Parameters:
-  PathParam:    
-    Type: String  
-    Default: "/TimeResource"
+  NameParam:    
+    Type: String      
 Resources:
   TimeFunction:
     Type: AWS::Serverless::Function    
@@ -12,10 +10,12 @@ Resources:
       Handler: index.handler
       Runtime: nodejs6.10
       CodeUri: ./
+      FunctionName: 
+        Ref: NameParam
       Events:
         MyTimeApi:
           Type: Api
           Properties:
-            Path: ${PathParam}
+            Path: /TimeResource
             Method: GET
             

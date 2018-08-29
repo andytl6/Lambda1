@@ -1,5 +1,5 @@
 {
     "Parameters" : {
-      "PathParam" : "/ProdTimeResource"      
+      "NameParam" : "MyProdTimeResourceFunction"      
     }
   }
